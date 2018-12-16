@@ -7,10 +7,12 @@ from minimax import MinimaxTree
 PLAYERS = ['X', 'O']
 board = Board(np.array([
     ['-', '-', '-'],
-    ['-', '-', '-'],
+    ['-', 'O', '-'],
     ['-', '-', '-']
 ]))
 
 IA_Player = MinimaxTree(board)
-print(board.place(PLAYERS[0], IA_Player.find_best_move()))
+best_move = IA_Player.find_best_move()
+
+print(board.place(PLAYERS[0], best_move))
 

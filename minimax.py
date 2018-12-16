@@ -16,6 +16,8 @@ class MinimaxTree():
         self.state_value = None
         self.best_move = None
         self.best_state = None
+        self.alpha = -2
+        self.beta = 2
         self.nodes = []
         self.evaluate()
 
@@ -33,6 +35,7 @@ class MinimaxTree():
             elif game_state != self.cpu_player:
                 self.state_value = -1
 
+        
     def find_best_move(self):
         self.expand_node()
         return self.best_move
@@ -50,9 +53,12 @@ class MinimaxTree():
             next_board = Board(self.current_board.place('O' if next_state == 'MAX' else 'X', p))
             next_game_node = MinimaxTree(next_board, next_state)
             next_game_node.current_move = p
-            self.nodes.append(next_game_node)
             next_game_node.expand_node()
+            self.nodes.append(next_game_node)
 
+            if self.state == 'MAX' and next_game_node.best_state == 1: break
+            elif self.state == 'MIN' and next_game_node.best_state == -1: break
+            
         if len(self.nodes) > 0:
             if self.state == 'MAX':
                 self.maximize()
@@ -61,23 +67,19 @@ class MinimaxTree():
             self.nodes = None
 
     def minimize(self):
-        val, mov = 2, []
+        self.best_state, self.best_move = 2, []
         for n in self.nodes:
-            if n.best_state < val:
-                val = n.best_state
-                mov = n.current_move
-                if val == -1:
+            if n.best_state < self.best_state:
+                self.best_state = n.best_state
+                self.best_move = n.current_move
+                if self.best_state == -1:
                     break
-        self.best_state = val
-        self.best_move = mov
-
+        
     def maximize(self):
-        val, mov = -2, []
+        self.best_state, self.best_move = -2, []
         for n in self.nodes:
-            if n.best_state > val:
-                val = n.best_state
-                mov = n.current_move
-                if val == 1:
+            if n.best_state > self.best_state:
+                self.best_state = n.best_state
+                self.best_move = n.current_move
+                if self.best_state == 1:
                     break
-        self.best_state = val
-        self.best_move = mov

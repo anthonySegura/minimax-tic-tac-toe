@@ -45,7 +45,7 @@ class Board():
             elif self.check_col_win(player):
                 return player
             elif self.check_diag_win(player):
-                winner = player
+                return player
         if len(self.availables_moves()) == 0:
             winner = 0
 
