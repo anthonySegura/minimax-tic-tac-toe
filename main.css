@@ -1,0 +1,203 @@
+html {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+*,*:before,*:after {
+    -moz-box-sizing: inherit;
+    box-sizing: inherit
+}
+
+body {
+    margin: 5px;
+    background-color: #000;
+    color: #fff;
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%
+}
+
+.game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    margin-left: -300px;
+    margin-top: -300px;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.board {
+    width: 100%;
+    height: 100%
+}
+
+@-webkit-keyframes border-blink {
+    50% {
+        border-color: #000
+    }
+}
+
+@-moz-keyframes border-blink {
+    50% {
+        border-color: #000
+    }
+}
+
+@keyframes border-blink {
+    50% {
+        border-color: #000
+    }
+}
+
+@-webkit-keyframes blink {
+    50% {
+        visibility: hidden
+    }
+}
+
+@-moz-keyframes blink {
+    50% {
+        visibility: hidden
+    }
+}
+
+@keyframes blink {
+    50% {
+        visibility: hidden
+    }
+}
+
+@-webkit-keyframes appear {
+    from {
+        -webkit-transform: scale(.3);
+        transform: scale(.3)
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@-moz-keyframes appear {
+    from {
+        -moz-transform: scale(.3);
+        transform: scale(.3)
+    }
+
+    to {
+        -moz-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@keyframes appear {
+    from {
+        transform: scale(.3)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+
+.square {
+    float: left;
+    width: 33.333333333%;
+    height: 33.333333333%;
+    cursor: pointer;
+    border-width: 5px;
+    border-color: #fff;
+    will-change: border-color
+}
+
+.square.top {
+    border-bottom-style: solid
+}
+
+.square.bottom {
+    border-top-style: solid
+}
+
+.square.left {
+    clear: both;
+    border-right-style: solid
+}
+
+.square.right {
+    border-left-style: solid
+}
+
+.board.blink .square {
+    -webkit-animation: border-blink .3s steps(1) 3;
+    -moz-animation: border-blink .3s steps(1) 3;
+    animation: border-blink .3s steps(1) 3
+}
+
+.square .o.blink,.square .x.blink {
+    -webkit-animation: blink .3s steps(1) 3;
+    -moz-animation: blink .3s steps(1) 3;
+    animation: blink .3s steps(1) 3
+}
+
+.o {
+    left: 16.666666667%;
+    top: 16.666666667%;
+    width: 66.666666667%;
+    height: 66.666666667%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 20px solid #fff
+}
+
+.x {
+    width: 100%;
+    height: 100%
+}
+
+.square .x,.square .o {
+    position: relative;
+    will-change: transform;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    -webkit-animation: appear .2s cubic-bezier(.5,1.8,.1,1.1);
+    -moz-animation: appear .2s cubic-bezier(.5,1.8,.1,1.1);
+    animation: appear .2s cubic-bezier(.5,1.8,.1,1.1)
+}
+
+.x:before,.x:after {
+    position: absolute;
+    content: "";
+    display: block;
+    background-color: #fff;
+    left: 90px;
+    top: 20px;
+    width: 20px;
+    height: 160px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+.x:before {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.x:after {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+
+

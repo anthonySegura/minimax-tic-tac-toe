@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="main.css">
+	<title>Minimax Tic Tac Toe</title>
+</head>
+
+<body>
+	<div class="game">
+		<div class="board">
+			<div class="square top left" onclick="move('0-0')">
+				<div id="0-0"></div>
+			</div>
+			<div class="square top" onclick="move('0-1')">
+				<div id="0-1"></div>
+			</div>
+			<div class="square top right" onclick="move('0-2')">
+				<div id="0-2"></div>
+			</div>
+			<div class="square left" onclick="move('1-0')">
+				<div id="1-0"></div>
+			</div>
+			<div class="square" onclick="move('1-1')">
+				<div id="1-1"></div>
+			</div>
+			<div class="square right" onclick="move('1-2')">
+				<div id="1-2"></div>
+			</div>
+			<div class="square bottom left" onclick="move('2-0')">
+				<div id="2-0"></div>
+			</div>
+			<div class="square bottom" onclick="move('2-1')">
+				<div id="2-1"></div>
+			</div>
+			<div class="square bottom right" onclick="move('2-2')">
+				<div id="2-2"></div>
+			</div>
+		</div>
+		<div class="restart"></div>
+	</div>
+
+</body>
+<script src="renderer.js"></script>
+
+</html>

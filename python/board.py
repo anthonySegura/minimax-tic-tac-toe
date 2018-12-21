@@ -1,6 +1,5 @@
 __author__ = 'Anthony'
 
-import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -17,7 +16,7 @@ class Board():
             print('Invalid movement')
         return board_copy
 
-    def play(self, player, position):
+    def place(self, player, position):
         if self.board[position[0]][position[1]] == self.EMPTY:
             self.board[position[0]][position[1]] = player
         else:
@@ -42,9 +41,27 @@ class Board():
             [self.board[0][0], self.board[1][1], self.board[2][2]],
             [self.board[2][0], self.board[1][1], self.board[0][2]],
         ]
-
         if [player, player, player] in win_positions:
             return player
+
+    def winner_positions(self):
+        win_positions = [
+            [[0,0], [0,1], [0,2]],
+            [[2,0], [2,1], [2,2]],
+            [[0,0], [1,0], [2,0]],
+            [[0,1], [1,1], [2,1]],
+            [[0,2], [1,2], [2,2]],
+            [[0,0], [1,1], [2,2]],
+            [[2,0], [1,1], [0,2]],
+        ]
+        for row in win_positions:
+           moves = [self.board[p[0]][p[1]] for p in row] 
+           if ['X', 'X', 'X'] == moves:
+               return row
+           elif ['O', 'O', 'O'] == moves:
+               return row    
+
+        return []       
 
     def __str__(self):
         str = ''
