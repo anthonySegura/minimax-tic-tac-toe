@@ -4,7 +4,7 @@ let board = [
 	['-', '-', '-'],
 	['-', '-', '-'],
 	['-', '-', '-']
-]
+];
 let GAME_OVER = false;
 let WAITING = false;
 
